@@ -11,3 +11,5 @@ Session.vim
 *~
 *.un~
 .*.un~
+src/*.un~
+src/.*.un~
