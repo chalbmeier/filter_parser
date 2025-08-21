@@ -3,8 +3,8 @@
 /// Grammar of filter syntax:
 ///
 /// grouping -> "(" or_group ")" | "[" or_group "]" | "{" or_group "}" 
-/// or_group ->  and_group ( "|" or_group )*
-/// and_group ->  primary ( "|" and_group )*
+/// or_group ->  and_group ( "|" and_group )*
+/// and_group ->  primary ( "&" primary )*
 /// primary -> filter | grouping
 /// filter -> ( set ( "=" | "==" | "!=" | ">" | ">=" | "<" | "<=" ) ( set | NUMBER | range | list ) ) 
 /// set -> (( NUMBER | IDENTIFIER ) ";")? IDENTIFIER
@@ -18,7 +18,6 @@ use crate::error::ParsingError;
 use crate::expr::Expr;
 use crate::scanner::Token;
 use crate::token_type::TokenType::{self, *};
-
 
 pub struct Parser<'a> {
     tokens: &'a Vec<Token>,
@@ -67,7 +66,6 @@ impl<'a> Parser<'a> {
         }
     }
     
-
     /// Advances parser to '&' or '|' after error
     fn synchronize(&mut self) {
         self.synchronized = true;
@@ -163,7 +161,6 @@ impl<'a> Parser<'a> {
     /// Ex.: 'q02;elb0003>1' or 'elb0002=1' or '02;elb0002!=elb0001'
     fn filter(&mut self) -> Result<Expr, ParsingError> {
 
-           
         // Match left hand side, ex: q04;elb0003
         let set = self.set()?;
 
