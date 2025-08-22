@@ -41,7 +41,7 @@ Error: Parsing error
 
 ## Description
 
-In an effort to learn Rust, I programmed a recursive descent parser for SOEP-style filter syntax. The [SOEP](https://www.diw.de/en/diw_01.c.615551.en/research_infrastructure__socio-economic_panel__soep.html) is a large German panel survey that uses filters to navigate respondents through a sequence of survey questions. Filters and questions are defined in the [SOEP Metadata database](https://git.soep.de/kwenzig/publicecoredoku), which forms the backbone of the survey process from start to end. Although there is no official, fully spelled out syntax for filters (how dare you, SOEP!), a working definition has been established:
+filter_parser is a recursive descent parser for SOEP-style filter syntax. The [SOEP](https://www.diw.de/en/diw_01.c.615551.en/research_infrastructure__socio-economic_panel__soep.html) is a large German panel survey that uses filters to navigate respondents through a sequence of survey questions. Filters and questions are defined in the [SOEP Metadata database](https://git.soep.de/kwenzig/publicecoredoku), which forms the backbone of the survey process from start to end. Although there is no official, fully spelled out syntax for filters (how dare you, SOEP!), a working definition has been established:
 
 Filters typically look like this: `q01;hl0001=1`. `q01` identifies a question and `hl0001` identifies an item. The two identifiers are separated by a `;` and are followed by a symbol for comparison: `=`, `==`, `!=`, `>`, `>=`, `<`, `<=`. Next is a number (`1`), or a list of numbers `-2,-1,1`, or a range `1:4`, or an item identifier `hl0012`, or a combination of question and item identifier `q02;hl0012`.
 
@@ -55,7 +55,7 @@ A possible future extension of filter_parser is to allow for mathematical operat
 
 ## Credits
 
-This work is to a very large extent inspired by the great book ["Crafting Interpreters" by Robert Nystrom](https://craftinginterpreters.com/).
+This work is very much inspired by the great book ["Crafting Interpreters" by Robert Nystrom](https://craftinginterpreters.com/).
 
 ---
 
