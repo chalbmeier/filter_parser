@@ -1,7 +1,11 @@
 [package]
 name = "filter_parser"
 version = "0.1.0"
+authors = ["Christoph Halbmeier <c.halbmeier@gmail.com>"]
 edition = "2024"
+description = "A command-line parser for SOEP-style filter expressions"
+license = "MIT"
+repository = "https://github.com/chalbmeier/filter_parser"
 
 [dependencies]
 ariadne = "0.5.1"
